@@ -10,16 +10,16 @@ workflows:
 jobs:
   format_check:
     docker:
-      - image: "hashicorp/terraform:0.11.14"
+      - image: "hashicorp/terraform:0.12.13"
     steps:
       - checkout
       - run:
           name: Check terraform formatting
-          command: terraform fmt -check=true -write=false
+          command: terraform fmt -check=true -write=false -diff
   validation_check:
     working_directory: ~
     docker:
-      - image: "hashicorp/terraform:0.11.14"
+      - image: "hashicorp/terraform:0.12.13"
     steps:
       - checkout
       - run:
